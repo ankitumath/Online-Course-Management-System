@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API =
-  "http://localhost:5000/api/wishlist";
+  "https://online-course-management-system-as0l.onrender.com/api/wishlist";
 
 export const getWishlist =
   async (token) => {

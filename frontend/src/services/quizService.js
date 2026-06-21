@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API =
-  "http://localhost:5000/api/quizzes";
+  "https://online-course-management-system-as0l.onrender.com/api/quizzes";
 
 export const getQuiz =
   async (courseId) => {

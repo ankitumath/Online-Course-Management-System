@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API =
-  "http://localhost:5000/api/results";
+  "https://online-course-management-system-as0l.onrender.com/api/results";
 
 export const saveResult =
   async (
