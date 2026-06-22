@@ -48,8 +48,8 @@ useEffect(() => {
       "
     >
       <h1 className="text-3xl font-bold mb-10">
-        OnCourse
-      </h1>
+  🎓 EduPath
+</h1>
 
       <nav className="space-y-4">
 
