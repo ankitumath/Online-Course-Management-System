@@ -1,99 +1,103 @@
 import { useState } from "react";
-
-import {
-  registerUser,
-} from "../services/authService";
+import { registerUser } from "../services/authService";
+import { useNavigate, Link } from "react-router-dom";
 
 function Register() {
-  const [formData, setFormData] =
-    useState({
-      name: "",
-      email: "",
-      password: "",
-    });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]:
-        e.target.value,
-    });
-  };
+const navigate = useNavigate();
 
-  const handleSubmit = async (
-    e
-  ) => {
-    e.preventDefault();
+const [formData, setFormData] = useState({
+name: "",
+email: "",
+password: "",
+});
 
-    try {
-      const response =
-        await registerUser(
-          formData
-        );
+const handleChange = (e) => {
+setFormData({
+...formData,
+[e.target.name]: e.target.value,
+});
+};
 
-      console.log(response.data);
+const handleSubmit = async (e) => {
+e.preventDefault();
 
-      alert(
-        "Registration Successful"
-      );
-    } catch (error) {
-  console.log("ERROR:", error);
+try {
 
-  console.log(
-    "RESPONSE:",
-    error.response?.data
-  );
+  await registerUser(formData);
+
+  alert("Account Created Successfully");
+
+  navigate("/login");
+
+} catch (error) {
 
   alert(
     error.response?.data?.message ||
-    error.message
+    "Registration Failed"
   );
+
 }
-  };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md"
+};
+
+return ( <div className="min-h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-950 transition-colors">
+
+  <form
+    onSubmit={handleSubmit}
+    className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg w-full max-w-md"
+  >
+
+    <h1 className="text-3xl font-bold mb-6 text-slate-900 dark:text-white">
+      Create Account
+    </h1>
+
+    <input
+      type="text"
+      name="name"
+      placeholder="Full Name"
+      className="w-full border p-3 mb-4 rounded dark:bg-slate-700 dark:text-white"
+      onChange={handleChange}
+    />
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      className="w-full border p-3 mb-4 rounded dark:bg-slate-700 dark:text-white"
+      onChange={handleChange}
+    />
+
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      className="w-full border p-3 mb-4 rounded dark:bg-slate-700 dark:text-white"
+      onChange={handleChange}
+    />
+
+    <button
+      type="submit"
+      className="w-full bg-indigo-600 text-white py-3 rounded-lg"
+    >
+      Create Account
+    </button>
+
+    <p className="mt-4 text-center text-slate-600 dark:text-slate-300">
+      Already have an account?
+      <Link
+        to="/login"
+        className="text-indigo-600 ml-2 font-semibold"
       >
-        <h1 className="text-3xl font-bold mb-6">
-          Register
-        </h1>
+        Login
+      </Link>
+    </p>
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          className="w-full border p-3 mb-4 rounded"
-          onChange={handleChange}
-        />
+  </form>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-full border p-3 mb-4 rounded"
-          onChange={handleChange}
-        />
+</div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="w-full border p-3 mb-4 rounded"
-          onChange={handleChange}
-        />
-
-        <button
-          type="submit"
-          className="w-full bg-indigo-600 text-white py-3 rounded"
-        >
-          Register
-        </button>
-      </form>
-    </div>
-  );
+);
 }
 
 export default Register;

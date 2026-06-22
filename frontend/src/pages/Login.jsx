@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { loginUser } from "../services/authService";
 
-import { useNavigate }
-from "react-router-dom";
+import {
+  useNavigate,
+  Link,
+} from "react-router-dom";
 
 import { useAuth }
 from "../context/AuthContext";
@@ -88,6 +90,16 @@ console.log("TOKEN:", response.data.token);
         >
           Login
         </button>
+<p className="mt-4 text-center">
+  Don't have an account?
+  <Link
+    to="/register"
+    className="text-indigo-600 ml-2 font-semibold"
+  >
+    Create Account
+  </Link>
+</p>
+
       </form>
     </div>
   );
