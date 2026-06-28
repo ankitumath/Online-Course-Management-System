@@ -1,5 +1,11 @@
 # 🎓 Online Course Management System
 
+Live Demo
+
+Frontend: https://online-course-management-system-one.vercel.app/
+
+Backend API: https://online-course-management-system-as0l.onrender.com
+
 A full-stack **MERN (MongoDB, Express.js, React.js, Node.js)** based Online Course Management System that allows administrators, instructors, and students to interact through a modern learning platform.
 
 This project is being built from scratch to understand the complete workflow of a production-ready Learning Management System (LMS), including authentication, authorization, course management, enrollments, progress tracking, and much more.
